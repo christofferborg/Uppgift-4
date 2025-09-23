@@ -1,6 +1,6 @@
 // Javascript
 
-const completedElement = document.querySelector('#completed');
+const completedElement = document.querySelector('#completedElement');
 const inputToDo = document.querySelector('#inputToDo');
 const addToDoBtn = document.querySelector('#addToDoBtn');
 const infoTextElement = document.querySelector('small');
@@ -21,43 +21,76 @@ function addToDo() {
         infoTextElement.textContent = 'Du måste skriva något';
         return;
     }
-// Add todo to the todo array
+    // Add todo to the todo array
     allTheToDos.push(todoText);
-   
-   
+
+
     const item = document.createElement('li');
     todoList.appendChild(item);
 
+    //Create span for todo-text
     const itemText = document.createElement('span');
     itemText.innerText = todoText;
 
-    // add event listener to span with text
+    // Create span for waste bin
 
+    const thrashSpan = document.createElement('span');
+    thrashSpan.innerText = ' 🗑️';
+
+    // Add eventlistener for waste bin
+    thrashSpan.addEventListener('click', () => {
+
+        if (itemText.classList.contains('completed')) {
+            completed--;
+            completedElement.textContent = updateCompleted();
+            item.remove();
+        }
+        else
+            item.remove();
+    }
+    )
+    // add event listener to span with text
     itemText.addEventListener('click',
         function () {
             if (itemText.classList.contains('completed')) {
                 itemText.setAttribute('class', '');
                 completed--;
-                completedElement.textContent = 'Du har ' + completed
+                completedElement.textContent = updateCompleted();
 
             }
             else {
-                itemText.setAttribute('class', 'completed') 
+                itemText.setAttribute('class', 'completed')
                 completed++;
-                completedElement.textContent = 'Du har ' + completed
+                completedElement.textContent = updateCompleted();
             }
 
         }
     )
-
-/* label.innertext = `${completed} completed`; */
-
-
+    // Add the todos and the thrash bin to the list.
     item.appendChild(itemText);
+    item.appendChild(thrashSpan);
 
-    completedElement.textContent = 'Du har ' + completed + 'tasks!';
-    // as last thing: empty input field
+    completedElement.textContent = updateCompleted();
+
+    // Empty textfield
 
     inputToDo.value = '';
 }
+
+const updateCompleted = () => {
+    if (completed === 1) {
+        return 'Du har ' + completed + ' slutförd uppgift!';
+    }
+
+    else {
+        return 'Du har ' + completed + ' slutförda uppgifter!';
+    }
+};
+
+
+// Empty textfield when reloading browser.
+inputToDo.value = '';
+
+
+
 
