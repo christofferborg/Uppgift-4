@@ -18,7 +18,7 @@ function addToDo() {
     infoTextElement.textContent = '';
     todoText = inputToDo.value;
     if (todoText.length == 0) {
-        infoTextElement.textContent = 'Du måste skriva något';
+        infoTextElement.textContent = 'Du måste skriva något!';
         return;
     }
     // Add todo to the todo array
@@ -36,6 +36,7 @@ function addToDo() {
 
     const thrashSpan = document.createElement('span');
     thrashSpan.innerText = ' 🗑️';
+    thrashSpan.classList.add('thrash-icon');
 
     // Add eventlistener for waste bin
     thrashSpan.addEventListener('click', () => {
