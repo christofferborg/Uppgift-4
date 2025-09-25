@@ -20,7 +20,6 @@ header {
 /* Style the input */
 input {
     border: none;
-    width: 50%;
     padding: 10px;
     font-size: 16px;
     margin-right: 2em;
@@ -29,7 +28,6 @@ input {
 /* Style the "Add" button */
 button {
     padding: 10px 50px;
-    width: 50%;
     background: #d9d9d9;
     color: #555;
     text-align: center;
@@ -42,11 +40,13 @@ button:hover {
     background-color: #bbb;
 }
 
-small {
+.inputRow button {
+    flex: 0.5;
+    width: auto;
     margin-right: 2em;
-    color: #f44336;
 }
 
+/* Style the input field */
 .inputRow {
     display: flex;
     align-items: center;
@@ -59,13 +59,15 @@ small {
     margin-right: 0;
 }
 
-.inputRow button {
-    flex: 0.5;
-    width: auto;
+
+
+/* Styling for the warning text */
+small {
     margin-right: 2em;
+    color: #f44336;
 }
 
-
+/* Styling the list */
 ul {
     margin: 0;
     padding: 0;
@@ -91,7 +93,7 @@ ul li:hover {
     background: #ddd;
 }
 
-/* When clicked on, add a background color and strike out text */
+/* When clicked on strike out text */
 .completed {
     text-decoration: line-through;
 }
@@ -110,5 +112,5 @@ ul li:hover {
 }
 
 #completedElement {
-    margin-left: 2em;
+    margin-left: 1.5em;
 }
