@@ -1,5 +1,6 @@
 // Javascript
 
+// Declaring variables
 const completedElement = document.querySelector('#completedElement');
 const inputToDo = document.querySelector('#inputToDo');
 const addToDoBtn = document.querySelector('#addToDoBtn');
@@ -9,6 +10,11 @@ let todoText = '';
 let completed = 0;
 const allTheToDos = [];
 
+
+// Add default text to the completedElement
+completedElement.textContent = 'Du har ingen slutförd uppgift!' 
+
+// Add event listeners
 addToDoBtn.addEventListener('click', addToDo);
 
 
@@ -24,9 +30,9 @@ function addToDo() {
     // Add todo to the todo array
     allTheToDos.push(todoText);
 
-
+    // Create the li-element
     const item = document.createElement('li');
-    todoList.appendChild(item);
+   
 
     //Create span for todo-text
     const itemText = document.createElement('span');
@@ -38,7 +44,7 @@ function addToDo() {
     thrashSpan.innerText = ' 🗑️';
     thrashSpan.classList.add('thrash-icon');
 
-    // Add eventlistener for waste bin
+    // Add event listener for waste bin
     thrashSpan.addEventListener('click', () => {
 
         if (itemText.classList.contains('completed')) {
@@ -67,17 +73,15 @@ function addToDo() {
 
         }
     )
-    // Add the todos and the thrash bin to the list.
+    // Add the todos and the thrash bin to the DOM.
     item.appendChild(itemText);
     item.appendChild(thrashSpan);
-
-    completedElement.textContent = updateCompleted();
-
-    // Empty textfield
+    todoList.appendChild(item);
 
     inputToDo.value = '';
 }
 
+//Function for updating the number of tasks completed
 const updateCompleted = () => {
     if (completed === 1) {
         return 'Du har ' + completed + ' slutförd uppgift!';
