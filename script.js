@@ -12,7 +12,7 @@ const allTheToDos = [];
 
 
 // Add default text to the completedElement
-completedElement.textContent = 'Du har ingen slutförd uppgift!' 
+completedElement.textContent = 'Du har ingen slutförd uppgift!'
 
 // Add event listeners
 addToDoBtn.addEventListener('click', addToDo);
@@ -32,7 +32,7 @@ function addToDo() {
 
     // Create the li-element
     const item = document.createElement('li');
-   
+
 
     //Create span for todo-text
     const itemText = document.createElement('span');
@@ -46,14 +46,20 @@ function addToDo() {
 
     // Add event listener for waste bin
     thrashSpan.addEventListener('click', () => {
-
+        
+        //Remove from array. Didn't work. It just removed tha latest added item.
+      /*   const index = allTheToDos.indexOf(todoText);
+        if (index > -1) allTheToDos.splice(index, 1); */
+        
+        // Update completed if needed
         if (itemText.classList.contains('completed')) {
             completed--;
             completedElement.textContent = updateCompleted();
             item.remove();
+            
         }
-        else
-            item.remove();
+        // Always remove from DOM
+        item.remove();
     }
     )
     // add event listener to span with text
