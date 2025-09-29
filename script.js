@@ -46,22 +46,20 @@ function addToDo() {
 
     // Add event listener for waste bin
     thrashSpan.addEventListener('click', () => {
-        
-        //Remove from array. Didn't work. It just removed tha latest added item.
-      /*   const index = allTheToDos.indexOf(todoText);
-        if (index > -1) allTheToDos.splice(index, 1); */
-        
-        // Update completed if needed
         if (itemText.classList.contains('completed')) {
             completed--;
             completedElement.textContent = updateCompleted();
-            item.remove();
-            
         }
         // Always remove from DOM
         item.remove();
-    }
-    )
+
+        const items = [...todoList.querySelectorAll('li > span:first-child')];
+        allTheToDos.length = 0; // töm nuvarande innehåll
+        allTheToDos.push(...items.map(s => s.textContent));
+
+
+
+    });
     // add event listener to span with text
     itemText.addEventListener('click',
         function () {
