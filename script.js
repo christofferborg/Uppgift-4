@@ -54,7 +54,7 @@ function addToDo() {
         item.remove();
 
         const items = [...todoList.querySelectorAll('li > span:first-child')];
-        allTheToDos.length = 0; // töm nuvarande innehåll
+        allTheToDos.length = 0;
         allTheToDos.push(...items.map(s => s.textContent));
 
 
