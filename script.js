@@ -52,10 +52,13 @@ function addToDo() {
         }
         // Always remove from DOM
         item.remove();
-
+        
+        // Creating a new temporary array with the remaining DOM-elements
         const items = [...todoList.querySelectorAll('li > span:first-child')];
+        // Empty the old array
         allTheToDos.length = 0;
-        allTheToDos.push(...items.map(s => s.textContent));
+        // Create a new array from the text in span and push it into the old one 
+        allTheToDos.push(...items.map(span => span.textContent));
 
 
 
